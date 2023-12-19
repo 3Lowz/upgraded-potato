@@ -1,0 +1,70 @@
+{
+  "name": "@adm-3/test-orm",
+  "version": "0.9.0",
+  "description": "Alea Library Template",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
+  "files": [
+    "dist/",
+    ".env.testing"
+  ],
+  "scripts": {
+    "build": "rm -rf ./dist && tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+    "watch": "tsc --watch --preserveWatchOutput --pretty",
+    "test": "jest",
+    "test:h": "jest --detectOpenHandles",
+    "test:watch": "jest --watch",
+    "test:ci": "docker run --entrypoint bash --rm -w $PWD -v $PWD:$PWD -v $PWD/.env.testing:$PWD/.env.testing -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:latest -c 'git config --global --add safe.directory \"*\";gitlab-runner exec docker test_job'",
+    "lint": "eslint --ignore-path .eslintignore ./src/ --ext .ts",
+    "initdb": "npx mikro-orm schema:fresh --run"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "alea",
+    "library"
+  ],
+  "author": "Alea Developer",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "mysql2": "^3.2.3",
+    "uuid": "^9.0.0"
+  },
+  "peerDependencies": {
+    "@mikro-orm/core": "5.9.5",
+    "@mikro-orm/mysql": "5.9.5"
+  },
+  "devDependencies": {
+    "@mikro-orm/cli": "5.9.5",
+    "@mikro-orm/migrations": "5.9.5",
+    "@mikro-orm/seeder": "5.9.5",
+    "@types/jest": "^29.1.2",
+    "@types/node": "^18.19.3",
+    "@types/uuid": "^9.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.1.2",
+    "jsdoc": "^4.0.2",
+    "jsdoc-plugin-typescript": "^2.2.0",
+    "prettier": "^2.8.7",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.7.0",
+    "typescript": "^5.1.3"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./src/mikro-orm.config.ts",
+      "./dist/mikro-orm.config.js"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+node_modules/
+coverage/
+out/
+.vscode/
+dist/
+.env.development
+.env.production
+data/
