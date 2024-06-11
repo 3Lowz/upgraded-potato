@@ -1,13 +1,12 @@
-// @ts-nocheck
-// import { MikroORM } from '@mikro-orm/mysql'
+import { MikroORM } from '@mikro-orm/mysql'
 
 // Increasing the jest timeout for long ajax calls
-jest.setTimeout(25000)
+jest.setTimeout(2500)
 
-let db: any
+let db: MikroORM
 
 beforeAll(async () => {
-  db = globalThis.db
+  db = (globalThis as any).db
 })
 
 describe('Index Library Test:', () => {

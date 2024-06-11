@@ -1,7 +1,7 @@
 {
-  "name": "@adm-3/test-orm",
-  "version": "0.9.0",
-  "description": "Alea Library Template",
+  "name": "@3lowz/upgraded-potato",
+  "version": "0.0.1",
+  "description": "Personal Library Template",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "typings": "./dist/index.d.ts",
@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "build": "rm -rf ./dist && tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+    "build:prod": "rm -rf ./dist && tsc --project tsconfig.prod.json && tsc-alias -p tsconfig.prod.json",
     "watch": "tsc --watch --preserveWatchOutput --pretty",
     "test": "jest",
     "test:h": "jest --detectOpenHandles",
@@ -21,13 +22,14 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/3Lowz/upgraded-potato"
   },
   "keywords": [
-    "alea",
-    "library"
+    "typescript",
+    "library",
+    "template"
   ],
-  "author": "Alea Developer",
+  "author": "3lowz",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",

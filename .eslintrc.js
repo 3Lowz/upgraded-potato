@@ -4,9 +4,9 @@ module.exports = {
   plugins: ['@typescript-eslint', 'prettier'],
   root: true,
   rules: {
-    // indent: ['error', 2],
+    indent: ['error', 2],
     indent: 'off',
-    // '@typescript-eslint/indent': ['error', 2],
+    '@typescript-eslint/indent': ['error', 2],
     "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     "@typescript-eslint/no-empty-interface": [
       "off",
@@ -19,7 +19,7 @@ module.exports = {
     'no-else-return': 1,
     'no-unreachable': 'error',
     'no-const-assign': 'error',
-    // 'spaced-comment': 1,
+    'spaced-comment': 2,
     'prettier/prettier': 2,
   },
 }

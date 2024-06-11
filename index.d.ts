@@ -10,7 +10,7 @@ import { Config, IConfig } from './src/entities1'
 /**
  * Library definition
  */
-declare module '@adm-3/glo' {
+declare module '@3lowz/upgraded-potato' {
   export { ConfigService, IConfig, Config }
   export { libraryEntities as default }
 }

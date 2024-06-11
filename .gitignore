@@ -1,8 +1,17 @@
-node_modules/
-coverage/
-out/
-.vscode/
-dist/
+# Envs
 .env.development
 .env.production
+
+# IDE
+.vscode/
+
+# Npm
+node_modules/
+dist/
+
+# Docker
 data/
+
+# Docs
+coverage/
+out/

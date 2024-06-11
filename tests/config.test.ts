@@ -1,20 +1,19 @@
-// @ts-nocheck
 import { ConfigService } from './../src/index'
 import { IConfig } from '../src/entities/config.entity'
 
 // Increasing the jest timeout for long ajax calls
-jest.setTimeout(25000)
+jest.setTimeout(2500)
 
 let service: ConfigService
 let db: any
 
 beforeAll(async () => {
-  db = globalThis.db
+  db = (globalThis as any).db
 })
 
 describe('Config Service Test:', () => {
   // const testConfigsId: any = []
-  let testConfigId = ''
+  let testConfigId: string = ''
 
   beforeAll(() => {
     service = new ConfigService(db)
@@ -50,11 +49,10 @@ describe('Config Service Test:', () => {
     } as IConfig)
     expect(res).toBeDefined()
     expect(res.id).toBeDefined()
-    console.log(res)
-    console.log(`virtual is : ${res.virtual}`)
-    console.log(`getVirtual is : ${res.getVirtual}`)
+    // console.log(`virtual is : ${res.virtual}`)
+    // console.log(`getVirtual is : ${res.getVirtual}`)
     // expect(res.virtual).toBeDefined()
-    testConfigId = res.id
+    testConfigId = res.id!
   })
 
   // test(`[create] Should create another Config instance`, async () => {
@@ -97,9 +95,8 @@ describe('Config Service Test:', () => {
   test(`[getById] Should return Config by id`, async () => {
     const res = await service.getById(testConfigId)
     expect(res).toBeDefined()
-    console.log(res)
-    console.log(`virtual is : ${res.virtual}`)
-    console.log(`getVirtual is : ${res.getVirtual}`)
+    // console.log(`virtual is : ${res.virtual}`)
+    // console.log(`getVirtual is : ${res.getVirtual}`)
     expect(res.code).toBe('glo_db_version')
     expect(res.value).toBe('0.10')
   })

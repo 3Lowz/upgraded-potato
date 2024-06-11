@@ -5,11 +5,7 @@ export class ConfigService /* extends ApiService<Config> */ {
   public db: MikroORM
   public em: EntityManager
 
-  // private codeModule: string
-
   constructor(database: MikroORM) {
-    // super(database, 'Config')
-    // this.codeModule = 'EXT'
     if (!database) {
       throw new Error(`Database connection must be specified`, { cause: { statusCode: 500 } })
     }
@@ -18,30 +14,23 @@ export class ConfigService /* extends ApiService<Config> */ {
     return this
   }
 
-  async create(config: any) {
+  async create(config: any): Promise<Config> {
     const repo = this.em.getRepository(Config)
-    console.log(config)
     const newConfig = repo.create({ ...config })
     this.em.persist([newConfig])
     await this.em.flush()
     return newConfig
   }
 
-  getById(id: string) {
+  async getById(id: string): Promise<Config> {
     const repo = this.em.getRepository(Config)
-    const config = repo.findOne({ id })
+    const config = await repo.findOne({ id })
+    if (!config) {
+      throw new Error(`Config with id : ${id} not found`)
+    }
     return config
   }
 
-  // update() {}
-  // getList() {}
-  // getByCode() {}
-  // getByModule() {}
-
-  async getForModule(codeModule: string) {
-    const settings = await this.em.find(Config, { codeModule: codeModule })
-    return settings
-  }
 }
 
 export default ConfigService

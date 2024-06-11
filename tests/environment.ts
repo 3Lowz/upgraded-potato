@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { TestEnvironment } from 'jest-environment-node'
 import { MikroORM, type MySqlDriver } from '@mikro-orm/mysql'
 import dbConfig from './../src/mikro-orm.config'
@@ -6,10 +5,8 @@ import dbConfig from './../src/mikro-orm.config'
 export default class LibraryEnvironment extends TestEnvironment {
   db: MikroORM
 
-  constructor(config, context) {
+  constructor(config: any, context: any) {
     super(config, context)
-    // this.testPath = context.testPath
-    // this.docblockPragmas = context.docblockPragmas
   }
 
   async setup() {
@@ -22,8 +19,6 @@ export default class LibraryEnvironment extends TestEnvironment {
   }
 
   async teardown() {
-    // this.global.someGlobalObject = destroyGlobalObject()
-    // await someTeardownTasks()
     this.db.close()
     await super.teardown()
   }
@@ -32,7 +27,7 @@ export default class LibraryEnvironment extends TestEnvironment {
     return super.getVmContext()
   }
 
-  async handleTestEvent(event, state) {
+  async handleTestEvent(event: any, state: Object) {
     if (event.name === 'test_start') {
       // ...
     }

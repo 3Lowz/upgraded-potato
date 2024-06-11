@@ -22,11 +22,19 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": false,
     "target": "esnext",
-    "lib": ["es2022"],
+    "lib": [
+      "es2022"
+    ],
     "paths": {
-      "@root/*": ["./src/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@types": ["./index.d"]
+      "@root/*": [
+        "./src/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@types": [
+        "./index.d"
+      ]
     }
   },
   "include": [
