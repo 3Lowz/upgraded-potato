@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 services:
   # webserver:
   #   image: node:20-buster
@@ -20,7 +20,7 @@ services:
     container_name: 'lib-tmpl-mysql'
     restart: 'always'
     ports:
-      - "3306:3306"
+      - '3306:3306'
     volumes:
       - ./data/mysql:/var/lib/mysql
       - ./mysqld.conf:/etc/mysql/conf.d/mysqld.conf
