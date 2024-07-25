@@ -2,16 +2,15 @@ import { Entity } from '@mikro-orm/core'
 import { MikroORM, EntityManager } from '@mikro-orm/mysql'
 
 import libraryEntities from '@root/entities'
-import { ConfigService } from '@root/services'
+import { ConfigService, SimpleService } from '@root/services'
 
-import { IConfig } from './src'
-import { Config, IConfig } from './src/entities1'
+import { Config, IConfig, Simple, ISimple } from './src/entities1'
 
 /**
  * Library definition
  */
 declare module '@3lowz/upgraded-potato' {
-  export { ConfigService, IConfig, Config }
+  export { ApiService, ConfigService, SimpleService, IConfig, ISimple, Config, Simple }
   export { libraryEntities as default }
 }
 
@@ -21,22 +20,25 @@ declare module '@3lowz/upgraded-potato' {
 declare class ApiService<T> {
   private db: MikroORM
   private em: EntityManager
-  constructor(db: MikroORM): ApiService<T>
-  async create(data: T): Promise<T> // fix Type
-  async update(typeId: string, data: Type): Promise<T>
-  async delete(typeId: string): Promise<boolean>
-  async getList(pagination?: IPagination): Promise<T[]>
-  async getById(typeId: string): Promise<T>
+  private name: string
+  constructor(db: MikroORM, name: string): ApiService<T>
+  async create(data: T): Promise<T>
+  async update(id: string, data: T): Promise<T>
+  async getList(): Promise<T[]>
+  async getById(id: string): Promise<T>
+  async delete(id: string): Promise<boolean>
 }
 
 declare class ConfigService {
-  //extends ApiService<IConfig> {
+  // extends ApiService<IConfig> {
   private em: EntityManager
   async create(config: IConfig): Promise<Config>
   async getById(id: string): Promise<Config>
 }
 
+declare class SimpleService extends ApiService<ISimple> {}
+
 /**
  * Endpoint export
  */
-export { ConfigService, IConfig, Config }
+export { ConfigService, SimpleService, IConfig, ISimple, Config, Simple }

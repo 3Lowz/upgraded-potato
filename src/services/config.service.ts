@@ -30,7 +30,6 @@ export class ConfigService /* extends ApiService<Config> */ {
     }
     return config
   }
-
 }
 
 export default ConfigService

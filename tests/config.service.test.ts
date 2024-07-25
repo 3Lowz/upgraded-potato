@@ -101,6 +101,12 @@ describe('Config Service Test:', () => {
     expect(res.value).toBe('0.10')
   })
 
+  test(`[getVirtual] Should properly return the virtual field`, async () => {
+    const res = await service.getById(testConfigId)
+    expect(res).toBeDefined()
+    expect(res.value).toBe('0.10')
+    expect(res.getVirtual()).toBe('0.10myVfield')
+  })
   // test(`[delete] Should delete first config entry`, async () => {
   //   const res = await service.delete(testConfigId[0])
   //   expect(res).toBe(true)

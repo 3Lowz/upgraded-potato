@@ -11,17 +11,20 @@ export class Config {
   uuid?: string
   virtual?: string
   getVirtual() {
-    return `${this.value} + myVfield`
+    return `${this.value}myVfield` // Edit me!
   }
 }
 
-export type IConfig = Config
+export interface IConfig extends Config {}
 
 export const configSchema = new EntitySchema<IConfig>({
   name: 'Config',
-  tableName: 'glo_config',
+  tableName: 't_config',
+  class: Config,
+  extends: 'UUID',
   properties: {
     id: { type: 'bigint', primary: true },
+    uuid: { type: 'uuid', nullable: true }, // This is handled by the UUID abstract entity
     code: { type: 'string' },
     type: { type: 'string', nullable: true },
     value: { type: 'string', hidden: true },
@@ -29,8 +32,14 @@ export const configSchema = new EntitySchema<IConfig>({
     codeModule: { type: 'string' },
     priority: { type: 'integer', default: 0 },
     extCode: { type: 'string' },
-    uuid: { type: 'uuid', nullable: true }, // This is handled by the UUID abstract entity
-    virtual: { type: 'method', persist: false, getter: true, getterName: 'getVirtual' },
+    virtual: {
+      type: 'method',
+      persist: false,
+      getter: true,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      getterName: 'getVirtual',
+    },
   },
 })
 
