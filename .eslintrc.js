@@ -7,14 +7,14 @@ module.exports = {
     indent: ['error', 2],
     indent: 'off',
     '@typescript-eslint/indent': ['error', 2],
-    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
-    "@typescript-eslint/no-empty-interface": [
-      "off",
+    '@typescript-eslint/consistent-type-definitions': ['error'],
+    '@typescript-eslint/no-empty-interface': [
+      'off',
       {
-        "allowSingleExtends": false
-      }
+        allowSingleExtends: false,
+      },
     ],
-    "no-array-constructor": "off",
+    'no-array-constructor': 'off',
     'space-unary-ops': 2,
     'no-else-return': 1,
     'no-unreachable': 'error',
